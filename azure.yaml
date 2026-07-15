@@ -1,0 +1,13 @@
+name: app-service-agent-memory
+metadata:
+  template: app-service-agent-memory@0.1.0
+
+infra:
+  provider: bicep
+  path: infra
+
+services:
+  web:
+    project: .
+    language: python
+    host: appservice

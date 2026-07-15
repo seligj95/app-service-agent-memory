@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Persistent cross-session agent memory on Azure App Service"
+    />
+    <title>Persistent Agent Memory</title>
+    <link rel="icon" href="/static/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <header class="hero">
+      <div class="eyebrow">Azure App Service · Microsoft Agent Framework</div>
+      <h1>Two memory horizons.<br /><span>One continuous agent.</span></h1>
+      <p>
+        Redis keeps the current conversation coherent. Cosmos DB recalls durable,
+        user-scoped facts across new conversations.
+      </p>
+      <div class="identity-card">
+        <div>
+          <span>Demo user</span>
+          <strong id="user-id"></strong>
+        </div>
+        <div>
+          <span>Conversation</span>
+          <strong id="session-id"></strong>
+        </div>
+        <button id="new-session" class="secondary">New conversation</button>
+        <button id="new-user" class="ghost">New demo user</button>
+      </div>
+      <p class="identity-warning">
+        Demo identity lives in localStorage. Production apps must derive the user ID
+        from authenticated identity claims.
+      </p>
+    </header>
+
+    <main class="layout">
+      <section class="panel chat-panel">
+        <div class="panel-heading">
+          <div>
+            <span class="section-mark">Chat</span>
+            <h2>Chat with memory</h2>
+          </div>
+          <span id="mode-badge" class="badge">checking</span>
+        </div>
+        <div id="messages" class="messages" aria-live="polite">
+          <article class="message assistant">
+            <div class="avatar">A</div>
+            <div>
+              <p>
+                Tell me something durable, such as “My favorite launch color is teal,”
+                then start a new conversation and ask me to recall it.
+              </p>
+            </div>
+          </article>
+        </div>
+        <form id="chat-form" class="composer">
+          <label class="sr-only" for="chat-input">Message</label>
+          <textarea
+            id="chat-input"
+            maxlength="8000"
+            rows="2"
+            placeholder="Ask the agent or share a durable fact…"
+            required
+          ></textarea>
+          <button type="submit">Send</button>
+        </form>
+      </section>
+
+      <aside class="side-stack">
+        <section class="panel">
+          <div class="panel-heading compact">
+            <div>
+              <span class="section-mark">Memory</span>
+              <h2>Explicit memory</h2>
+            </div>
+          </div>
+          <form id="remember-form" class="stack-form">
+            <label for="memory-input">Remember a fact</label>
+            <textarea
+              id="memory-input"
+              maxlength="2000"
+              rows="3"
+              placeholder="I prefer concise answers."
+              required
+            ></textarea>
+            <button type="submit">Remember</button>
+          </form>
+          <form id="recall-form" class="stack-form divided">
+            <label for="recall-input">Semantic recall</label>
+            <div class="inline-form">
+              <input
+                id="recall-input"
+                maxlength="8000"
+                placeholder="What do I prefer?"
+                required
+              />
+              <button type="submit" class="secondary">Recall</button>
+            </div>
+          </form>
+          <div id="recall-results" class="memory-results"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-heading compact">
+            <div>
+              <span class="section-mark">Ledger</span>
+              <h2>Durable memories</h2>
+            </div>
+            <button id="refresh-memories" class="icon-button" title="Refresh">↻</button>
+          </div>
+          <div id="memory-list" class="memory-list">
+            <p class="empty">No durable memories yet.</p>
+          </div>
+        </section>
+      </aside>
+    </main>
+
+    <footer>
+      <span>Short-term</span> Azure Managed Redis
+      <i></i>
+      <span>Durable</span> Cosmos DB vector search
+      <i></i>
+      <span>Identity</span> Managed identity
+    </footer>
+
+    <div id="toast" class="toast" role="status"></div>
+    <script src="/static/app.js" defer></script>
+  </body>
+</html>
