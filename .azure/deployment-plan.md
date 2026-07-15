@@ -218,6 +218,12 @@ Validation completed at `2026-07-15T15:02:34Z`.
 - Tech Community state: Saved as draft; not published and not submitted for review
 - Draft editor: `https://techcommunity.microsoft.com/blog/AppsonAzureBlog/give-your-ai-agent-two-memories-with-azure-app-service/4537400/edit`
 
+## Repository Delivery
+
+- Repository: `https://github.com/seligj95/app-service-agent-memory`
+- Commit: `0e63d0e` (`feat: add persistent agent memory sample`)
+- Pull request: `https://github.com/seligj95/app-service-agent-memory/pull/1`
+
 ## Expected Outputs
 
 - Application source and static UI
