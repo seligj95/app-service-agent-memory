@@ -3,9 +3,7 @@
 A complete Python sample for agents that remember the current conversation **and** durable,
 user-scoped facts across new conversations.
 
-[Live demo](https://web-agent-memory-m4ryqjohhhc5k.azurewebsites.net/) ·
 [Architecture source](docs/architecture/architecture.excalidraw) ·
-[Tech Community draft](blog/techcommunity.md)
 
 ![Architecture for persistent agent memory on Azure App Service](docs/architecture/architecture.png)
 
