@@ -76,6 +76,13 @@ elements.chatForm.addEventListener("submit", async (event) => {
   }
 });
 
+elements.chatInput.addEventListener("keydown", (event) => {
+  if (event.key === "Enter" && !event.shiftKey && !event.isComposing) {
+    event.preventDefault();
+    elements.chatForm.requestSubmit();
+  }
+});
+
 elements.rememberForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   const text = elements.memoryInput.value.trim();
